@@ -11,7 +11,7 @@ title: Home
 
 <hr/>
 
-<div class="grid grid-upgrade">
+<div class="grid-upgrade">
   {% assign sorted = site.data.communities | sort: "name" %}
   {% for c in sorted %}
     {% include card.html name=c.name url=c.url description=c.description source=c.source %}
