@@ -1,0 +1,13 @@
+<div>
+<article>
+  <header>
+    <h3><a href="{{ include.url }}" target="_blank" rel="noopener">{{ include.name }}</a></h3>
+  </header>
+  {% if include.description %}
+    <p>{{ include.description }}</p>
+  {% endif %}
+  <footer>
+    <a href="{{ include.url }}">{{ include.url }}</a>
+  </footer>
+</article>
+</div>
