@@ -51,11 +51,11 @@ jobs:
         env:
           SOURCE: "issue #${{ github.event.issue.number }} by @${{ github.event.issue.user.login }}"
         run: |
-          yq -oy -i '. += [{
-            "name": env(NAME),
-            "url": env(URL),
-            "description": env(DESC),
-            "source": env(SOURCE)
+          yq --output-format=yaml --quote all -i '. += [{
+            "name": strenv(NAME),
+            "url": strenv(URL),
+            "description": strenv(DESC),
+            "source": strenv(SOURCE)
           }]' _data/communities.yml
 
       - name: Create or update PR (draft = approval gate)

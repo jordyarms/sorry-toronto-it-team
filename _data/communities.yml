@@ -1,4 +1,3 @@
-# Add/edit entries here. Descriptions included when reliably available.
 - name: "sir this is a wendy’s"
   url: "https://www.instagram.com/sir_tisawendys/"
   description: "\U0001F4CDtoronto | creative socials that build communities \U0001F46F‍♂️ if you'd like to become a host (wendy), or just want to meet cool people, join us!" # instagram descript
@@ -79,15 +78,15 @@
   url: "https://creativemornings.com/cities/TO"
   description: "CreativeMornings is a series of talks held around the world for attendees to enjoy friendly people, fresh coffee, and an international variety of breakfast foods."
   source: "@admin included 2025-08-29"
-- name: Repair Café Toronto
+- name: "Repair Café Toronto"
   url: https://repaircafetoronto.ca
   description: Repair Café Toronto is a grassroots, volunteer group that organizes events where neighbours help neighbours learn how to repair. Our events are hosted by local community centres, branches of the Toronto Public Library and other community-based organizations. The video below was filmed at a recent Repair Café event. You can meet some of the volunteers and fixers, and see what it’s like to visit a Repair Café.
-  source: issue #7 by @jordyarms
-- name: PROGRAM
+  source: "issue #7 by @jordyarms"
+- name: "PROGRAM"
   url: https://www.program.live
   description: PROGRAM IS A SOFTWARE WORKSHOP SERIES EXPLORING NEW FRONTIERS OF CODE & CREATIVITY.
-  source: issue #11 by @jordyarms
-- name: 535
+  source: "issue #11 by @jordyarms"
+- name: "535"
   url: https://535.studio
   description: 535 is a multidisciplinary studio for people who are in pursuit of excellence of their craft.
-  source: issue #9 by @jordyarms
+  source: "issue #9 by @jordyarms"
