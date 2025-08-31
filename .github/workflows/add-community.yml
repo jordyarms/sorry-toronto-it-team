@@ -54,16 +54,26 @@ jobs:
           printf "%s" "$BODY" > issue.md
 
           grab() {
+            # Grab lines between a heading "### <H>" and the next "### ..."
+            # Then collapse to a single line.
             awk -v H="### $1" '
-              $0 ~ "^"H"$" {in=1; next}
+              $0 == H {in=1; next}
               /^### / && in {in=0}
               in
-            ' issue.md | sed 's/\r$//' | awk 'BEGIN{ORS=" "} {gsub(/^ +| +$/,""); print}' | sed 's/[[:space:]]\+/ /g' | sed 's/^ *//; s/ *$//'
+            ' issue.md \
+            | sed 's/\r$//' \
+            | awk 'BEGIN{ORS=" "} {gsub(/^ +| +$/,""); print}' \
+            | sed 's/[[:space:]]\+/ /g; s/^ *//; s/ *$//'
           }
 
           NAME=$(grab "Name")
           URL=$(grab "URL")
           DESCRIPTION=$(grab "Description")
+
+          echo "Parsed:"
+          echo "  NAME: $NAME"
+          echo "  URL:  $URL"
+          echo "  DESC: $DESCRIPTION"
 
           # Basic validation
           test -n "$NAME"
