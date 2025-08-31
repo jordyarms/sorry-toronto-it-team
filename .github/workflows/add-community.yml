@@ -2,38 +2,23 @@ name: Add Community from Issue
 
 on:
   issues:
-    types: [labeled]
+    types: [opened, edited]
 
 permissions:
   contents: write
   pull-requests: write
   issues: read
 
+concurrency:
+  group: add-community-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
 jobs:
-  append:
-    if: github.event.label.name == 'community:accept'
+  propose:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      # Optional but recommended: only allow write/maintain/admin to trigger
-      - name: Check actor permission
-        id: perm
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const r = await github.rest.repos.getCollaboratorPermissionLevel({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              username: context.actor
-            });
-            core.setOutput('perm', r.data.permission);
-
-      - name: Enforce approver role
-        if: ${{ !contains('admin,maintain,write', steps.perm.outputs.perm) }}
-        run: |
-          echo "Insufficient permission: ${{ steps.perm.outputs.perm }}"; exit 1
 
       - name: Ensure data file exists and is a YAML array
         run: |
@@ -41,6 +26,8 @@ jobs:
           if [ ! -f _data/communities.yml ]; then
             echo "[]" > _data/communities.yml
           fi
+          # Must be a YAML sequence
+          yq -e 'tag == "!!seq"' _data/communities.yml >/dev/null || { echo "_data/communities.yml must be a YAML array"; exit 1; }
 
       - name: Install yq
         uses: mikefarah/yq@v4.44.3
@@ -54,8 +41,7 @@ jobs:
           printf "%s" "$BODY" > issue.md
 
           grab() {
-            # Grab lines between a heading "### <H>" and the next "### ..."
-            # Then collapse to a single line.
+            # Grab lines after "### <Heading>" until the next "### ..."
             awk -v H="### $1" '
               $0 == H {in=1; next}
               /^### / && in {in=0}
@@ -88,23 +74,19 @@ jobs:
           echo "description=$DESCRIPTION" >> $GITHUB_OUTPUT
           echo "source=$SOURCE" >> $GITHUB_OUTPUT
 
-      - name: Guard against duplicates
+      - name: Guard against duplicates (by name or url)
         env:
           NAME: ${{ steps.extract.outputs.name }}
           URL: ${{ steps.extract.outputs.url }}
         run: |
-          # Ensure file is a sequence (array)
-          yq -e 'tag == "!!seq"' _data/communities.yml >/dev/null || { echo "_data/communities.yml must be a YAML array (sequence)"; exit 1; }
-
-          DUPS=$(yq -r --arg n "$NAME" --arg u "$URL" '
-            [ .[] | select(.name == $n or .url == $u) ] | length
-          ' _data/communities.yml)
-
+          DUPS=$(yq -r --arg n "$NAME" --arg u "$URL" \
+            '[ .[] | select(.name == $n or .url == $u) ] | length' \
+            _data/communities.yml)
           if [ "$DUPS" != "0" ]; then
-            echo "Duplicate detected for name or url. Aborting."; exit 1;
+            echo "Duplicate detected for name or URL. Aborting."; exit 1
           fi
 
-      - name: Append entry to _data/communities.yml
+      - name: Append entry
         env:
           NAME: ${{ steps.extract.outputs.name }}
           URL: ${{ steps.extract.outputs.url }}
@@ -118,17 +100,30 @@ jobs:
             "source": strenv(SOURCE)
           }]' _data/communities.yml
 
-      - name: Create PR
+      - name: Sort by name
+        run: |
+          yq -oy 'sort_by(.name)' _data/communities.yml > _data/communities.sorted.yml
+          mv _data/communities.sorted.yml _data/communities.yml
+
+      - name: Create or update PR
         uses: peter-evans/create-pull-request@v6
         with:
           branch: "add-community/issue-${{ github.event.issue.number }}"
           commit-message: "Add community from issue #${{ github.event.issue.number }}"
           title: "Add community: ${{ steps.extract.outputs.name }} (from #${{ github.event.issue.number }})"
           body: |
-            Generated from issue #${{ github.event.issue.number }}.
+            This PR was generated automatically from issue #${{ github.event.issue.number }}.
+
+            **Proposed entry**
             - **Name:** ${{ steps.extract.outputs.name }}
             - **URL:** ${{ steps.extract.outputs.url }}
             - **Description:** ${{ steps.extract.outputs.description }}
             - **Source:** ${{ steps.extract.outputs.source }}
+
+            Maintainers: review and merge to incorporate.
           labels: community:automation
-          delete-branch: true
+          delete-branch: false
+          draft: true
+          signoff: false
+          add-paths: |
+            _data/communities.yml
