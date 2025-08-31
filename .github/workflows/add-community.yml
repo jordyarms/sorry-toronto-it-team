@@ -47,12 +47,6 @@ jobs:
           echo "URL=$URL" >> $GITHUB_ENV
           echo "DESC=$DESC" >> $GITHUB_ENV
 
-      - name: Prevent duplicates (by name or url)
-        run: |
-          DUPS=$(yq -r --arg n "$NAME" --arg u "$URL" \
-            '[ .[] | select(.name == $n or .url == $u) ] | length' _data/communities.yml)
-          [ "$DUPS" = "0" ] || { echo "Duplicate name or URL"; exit 1; }
-
       - name: Append entry
         env:
           SOURCE: "issue #${{ github.event.issue.number }} by @${{ github.event.issue.user.login }}"
@@ -63,11 +57,6 @@ jobs:
             "description": env(DESC),
             "source": env(SOURCE)
           }]' _data/communities.yml
-
-      - name: Sort by name
-        run: |
-          yq -oy 'sort_by(.name)' _data/communities.yml > _data/communities.sorted.yml
-          mv _data/communities.sorted.yml _data/communities.yml
 
       - name: Create or update PR (draft = approval gate)
         uses: peter-evans/create-pull-request@v6
