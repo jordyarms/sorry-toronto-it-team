@@ -1,0 +1,124 @@
+name: Add Community from Issue
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: read
+
+jobs:
+  append:
+    if: github.event.label.name == 'community:accept'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Optional but recommended: only allow write/maintain/admin to trigger
+      - name: Check actor permission
+        id: perm
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const r = await github.rest.repos.getCollaboratorPermissionLevel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              username: context.actor
+            });
+            core.setOutput('perm', r.data.permission);
+
+      - name: Enforce approver role
+        if: ${{ !contains('admin,maintain,write', steps.perm.outputs.perm) }}
+        run: |
+          echo "Insufficient permission: ${{ steps.perm.outputs.perm }}"; exit 1
+
+      - name: Ensure data file exists and is a YAML array
+        run: |
+          mkdir -p _data
+          if [ ! -f _data/communities.yml ]; then
+            echo "[]" > _data/communities.yml
+          fi
+
+      - name: Install yq
+        uses: mikefarah/yq@v4.44.3
+
+      - name: Extract fields from Issue Form
+        id: extract
+        env:
+          BODY: ${{ github.event.issue.body }}
+        run: |
+          set -euo pipefail
+          printf "%s" "$BODY" > issue.md
+
+          grab() {
+            awk -v H="### $1" '
+              $0 ~ "^"H"$" {in=1; next}
+              /^### / && in {in=0}
+              in
+            ' issue.md | sed 's/\r$//' | awk 'BEGIN{ORS=" "} {gsub(/^ +| +$/,""); print}' | sed 's/[[:space:]]\+/ /g' | sed 's/^ *//; s/ *$//'
+          }
+
+          NAME=$(grab "Name")
+          URL=$(grab "URL")
+          DESCRIPTION=$(grab "Description")
+
+          # Basic validation
+          test -n "$NAME"
+          test -n "$URL"
+          test -n "$DESCRIPTION"
+          echo "$URL" | grep -Eqi '^https?://'
+
+          SOURCE="issue #${{ github.event.issue.number }} by @${{ github.event.issue.user.login }}"
+
+          echo "name=$NAME" >> $GITHUB_OUTPUT
+          echo "url=$URL" >> $GITHUB_OUTPUT
+          echo "description=$DESCRIPTION" >> $GITHUB_OUTPUT
+          echo "source=$SOURCE" >> $GITHUB_OUTPUT
+
+      - name: Guard against duplicates
+        env:
+          NAME: ${{ steps.extract.outputs.name }}
+          URL: ${{ steps.extract.outputs.url }}
+        run: |
+          # Ensure file is a sequence (array)
+          yq -e 'tag == "!!seq"' _data/communities.yml >/dev/null || { echo "_data/communities.yml must be a YAML array (sequence)"; exit 1; }
+
+          DUPS=$(yq -r --arg n "$NAME" --arg u "$URL" '
+            [ .[] | select(.name == $n or .url == $u) ] | length
+          ' _data/communities.yml)
+
+          if [ "$DUPS" != "0" ]; then
+            echo "Duplicate detected for name or url. Aborting."; exit 1;
+          fi
+
+      - name: Append entry to _data/communities.yml
+        env:
+          NAME: ${{ steps.extract.outputs.name }}
+          URL: ${{ steps.extract.outputs.url }}
+          DESCRIPTION: ${{ steps.extract.outputs.description }}
+          SOURCE: ${{ steps.extract.outputs.source }}
+        run: |
+          yq -oy -i '. += [{
+            "name": strenv(NAME),
+            "url": strenv(URL),
+            "description": strenv(DESCRIPTION),
+            "source": strenv(SOURCE)
+          }]' _data/communities.yml
+
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: "add-community/issue-${{ github.event.issue.number }}"
+          commit-message: "Add community from issue #${{ github.event.issue.number }}"
+          title: "Add community: ${{ steps.extract.outputs.name }} (from #${{ github.event.issue.number }})"
+          body: |
+            Generated from issue #${{ github.event.issue.number }}.
+            - **Name:** ${{ steps.extract.outputs.name }}
+            - **URL:** ${{ steps.extract.outputs.url }}
+            - **Description:** ${{ steps.extract.outputs.description }}
+            - **Source:** ${{ steps.extract.outputs.source }}
+          labels: community:automation
+          delete-branch: true

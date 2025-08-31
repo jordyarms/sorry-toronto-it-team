@@ -1,0 +1,31 @@
+name: "Add community"
+description: "Propose a community to append to _data/communities.yml"
+title: "Add community: <name>"
+labels: ["community:proposal"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: The public name of the community.
+      placeholder: e.g., Mindful Miles
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: Must start with http:// or https://
+      placeholder: https://example.org
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: An official tagline or brief description of the community pulled from a reliable source (e.g., website, social media profile, etc.)
+      placeholder: One-liner describing the community.
+    validations:
+      required: true
