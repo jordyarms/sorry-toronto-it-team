@@ -17,87 +17,51 @@ jobs:
   propose:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Ensure data file exists and is a YAML array
         run: |
           mkdir -p _data
-          if [ ! -f _data/communities.yml ]; then
-            echo "[]" > _data/communities.yml
-          fi
-          # Must be a YAML sequence
+          [ -f _data/communities.yml ] || echo "[]" > _data/communities.yml
           yq -e 'tag == "!!seq"' _data/communities.yml >/dev/null || { echo "_data/communities.yml must be a YAML array"; exit 1; }
 
       - name: Install yq
         uses: mikefarah/yq@v4.44.3
 
-      - name: Extract fields from Issue Form
-        id: extract
-        env:
-          BODY: ${{ github.event.issue.body }}
+      - name: Parse Issue Form
+        id: issue-parser
+        uses: stefanbuck/github-issue-parser@v3
+        with:
+          template-path: .github/ISSUE_TEMPLATE/add_community.yml
+
+      - name: Validate fields
         run: |
-          set -euo pipefail
-          printf "%s" "$BODY" > issue.md
+          NAME="${{ steps.issue-parser.outputs.issueparser_name }}"
+          URL="${{ steps.issue-parser.outputs.issueparser_url }}"
+          DESC="${{ steps.issue-parser.outputs.issueparser_description }}"
 
-          grab() {
-            # Grab lines after "### <Heading>" until the next "### ..."
-            awk -v H="### $1" '
-              $0 == H {in=1; next}
-              /^### / && in {in=0}
-              in
-            ' issue.md \
-            | sed 's/\r$//' \
-            | awk 'BEGIN{ORS=" "} {gsub(/^ +| +$/,""); print}' \
-            | sed 's/[[:space:]]\+/ /g; s/^ *//; s/ *$//'
-          }
+          [ -n "$NAME" ] && [ -n "$URL" ] && [ -n "$DESC" ] || { echo "Missing fields"; exit 1; }
+          echo "$URL" | grep -Eqi '^https?://$|^https?://.+' || { echo "URL must start with http(s)://"; exit 1; }
 
-          NAME=$(grab "Name")
-          URL=$(grab "URL")
-          DESCRIPTION=$(grab "Description")
+          echo "NAME=$NAME" >> $GITHUB_ENV
+          echo "URL=$URL" >> $GITHUB_ENV
+          echo "DESC=$DESC" >> $GITHUB_ENV
 
-          echo "Parsed:"
-          echo "  NAME: $NAME"
-          echo "  URL:  $URL"
-          echo "  DESC: $DESCRIPTION"
-
-          # Basic validation
-          test -n "$NAME"
-          test -n "$URL"
-          test -n "$DESCRIPTION"
-          echo "$URL" | grep -Eqi '^https?://'
-
-          SOURCE="issue #${{ github.event.issue.number }} by @${{ github.event.issue.user.login }}"
-
-          echo "name=$NAME" >> $GITHUB_OUTPUT
-          echo "url=$URL" >> $GITHUB_OUTPUT
-          echo "description=$DESCRIPTION" >> $GITHUB_OUTPUT
-          echo "source=$SOURCE" >> $GITHUB_OUTPUT
-
-      - name: Guard against duplicates (by name or url)
-        env:
-          NAME: ${{ steps.extract.outputs.name }}
-          URL: ${{ steps.extract.outputs.url }}
+      - name: Prevent duplicates (by name or url)
         run: |
           DUPS=$(yq -r --arg n "$NAME" --arg u "$URL" \
-            '[ .[] | select(.name == $n or .url == $u) ] | length' \
-            _data/communities.yml)
-          if [ "$DUPS" != "0" ]; then
-            echo "Duplicate detected for name or URL. Aborting."; exit 1
-          fi
+            '[ .[] | select(.name == $n or .url == $u) ] | length' _data/communities.yml)
+          [ "$DUPS" = "0" ] || { echo "Duplicate name or URL"; exit 1; }
 
       - name: Append entry
         env:
-          NAME: ${{ steps.extract.outputs.name }}
-          URL: ${{ steps.extract.outputs.url }}
-          DESCRIPTION: ${{ steps.extract.outputs.description }}
-          SOURCE: ${{ steps.extract.outputs.source }}
+          SOURCE: "issue #${{ github.event.issue.number }} by @${{ github.event.issue.user.login }}"
         run: |
           yq -oy -i '. += [{
-            "name": strenv(NAME),
-            "url": strenv(URL),
-            "description": strenv(DESCRIPTION),
-            "source": strenv(SOURCE)
+            "name": env(NAME),
+            "url": env(URL),
+            "description": env(DESC),
+            "source": env(SOURCE)
           }]' _data/communities.yml
 
       - name: Sort by name
@@ -105,25 +69,23 @@ jobs:
           yq -oy 'sort_by(.name)' _data/communities.yml > _data/communities.sorted.yml
           mv _data/communities.sorted.yml _data/communities.yml
 
-      - name: Create or update PR
+      - name: Create or update PR (draft = approval gate)
         uses: peter-evans/create-pull-request@v6
         with:
           branch: "add-community/issue-${{ github.event.issue.number }}"
           commit-message: "Add community from issue #${{ github.event.issue.number }}"
-          title: "Add community: ${{ steps.extract.outputs.name }} (from #${{ github.event.issue.number }})"
+          title: "Add community: ${{ env.NAME }} (from #${{ github.event.issue.number }})"
           body: |
-            This PR was generated automatically from issue #${{ github.event.issue.number }}.
+            Generated from issue #${{ github.event.issue.number }}.
 
             **Proposed entry**
-            - **Name:** ${{ steps.extract.outputs.name }}
-            - **URL:** ${{ steps.extract.outputs.url }}
-            - **Description:** ${{ steps.extract.outputs.description }}
-            - **Source:** ${{ steps.extract.outputs.source }}
+            - **Name:** ${{ env.NAME }}
+            - **URL:**  ${{ env.URL }}
+            - **Description:** ${{ env.DESC }}
+            - **Source:** issue #${{ github.event.issue.number }} by @${{ github.event.issue.user.login }}
 
-            Maintainers: review and merge to incorporate.
+            Maintainers: review/merge to incorporate.
           labels: community:automation
-          delete-branch: false
+          add-paths: _data/communities.yml
           draft: true
-          signoff: false
-          add-paths: |
-            _data/communities.yml
+          delete-branch: false
