@@ -8,7 +8,7 @@ title: Home
 <p>Add or edit entries:</p>
 <ol>
 <li>by using the <a href="https://github.com/CivicTechTO/toronto-community-directory/issues/new?template=add_community.yml
-">add acommunity issue form</a></li>
+">add a community</a> issue form template</li>
 <li>by modifying <code>_data/communities.yml</code> on <a href="https://github.com/CivicTechTO/toronto-community-directory">CivicTechTO/toronto-community-directory</a>.</li>
 </ol>
 
