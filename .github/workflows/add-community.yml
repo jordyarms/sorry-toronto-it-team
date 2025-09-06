@@ -19,14 +19,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install yq
+        uses: mikefarah/yq@v4.44.3
+
       - name: Ensure data file exists and is a YAML array
         run: |
           mkdir -p _data
           [ -f _data/communities.yml ] || echo "[]" > _data/communities.yml
-          yq -e 'tag == "!!seq"' _data/communities.yml >/dev/null || { echo "_data/communities.yml must be a YAML array"; exit 1; }
-
-      - name: Install yq
-        uses: mikefarah/yq@v4.44.3
+          # Ensure it's a YAML sequence (array)
+          yq -e 'tag == "!!seq"' _data/communities.yml >/dev/null \
+            || { echo "_data/communities.yml must be a YAML array"; exit 1; }
 
       - name: Parse Issue Form
         id: issue-parser
@@ -41,17 +43,19 @@ jobs:
           DESC="${{ steps.issue-parser.outputs.issueparser_description }}"
 
           [ -n "$NAME" ] && [ -n "$URL" ] && [ -n "$DESC" ] || { echo "Missing fields"; exit 1; }
-          echo "$URL" | grep -Eqi '^https?://$|^https?://.+' || { echo "URL must start with http(s)://"; exit 1; }
+          # Require http(s):// followed by at least one more character (reject bare 'http://')
+          echo "$URL" | grep -Eqi '^https?://.+' || { echo "URL must start with http(s)://"; exit 1; }
 
-          echo "NAME=$NAME" >> $GITHUB_ENV
-          echo "URL=$URL" >> $GITHUB_ENV
-          echo "DESC=$DESC" >> $GITHUB_ENV
+          echo "NAME=$NAME" >> "$GITHUB_ENV"
+          echo "URL=$URL" >> "$GITHUB_ENV"
+          echo "DESC=$DESC" >> "$GITHUB_ENV"
 
       - name: Append entry
         env:
           SOURCE: "issue #${{ github.event.issue.number }} by @${{ github.event.issue.user.login }}"
         run: |
-          yq --output-format=yaml --quote all -i '. += [{
+          # yq v4: no --quote flag. This appends a mapping to the YAML array.
+          yq -o=yaml -i '. += [{
             "name": strenv(NAME),
             "url": strenv(URL),
             "description": strenv(DESC),
