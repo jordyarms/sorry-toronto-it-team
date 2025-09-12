@@ -93,12 +93,20 @@
 - name: Seagull Counting Club
   url: https://seagullcounting.club
   description: At Seagull Counting Club (SCC), we count seagulls.
-  source: 'issue #15 by @jordyarms'
+  source: "issue #15 by @jordyarms"
 - name: CCCRU
   url: https://cccru.ca
   description: CANADIAN CYBERNETIC CULTURAL RESEARCH UNIT
-  source: 'issue #18 by @jordyarms'
+  source: "issue #18 by @jordyarms"
 - name: Bike Pirates
   url: https://bikepirates.com
   description: WE ARE BACK TO DO-IT-YOURSELF ONLY
-  source: 'issue #22 by @jordyarms'
+  source: "issue #22 by @jordyarms"
+- name: bikeSauce
+  url: https://www.bikesauce.org
+  description: We are a 100% volunteer-run, not-for-profit DIY bike repair space and community hub. At bikeSauce, you are the mechanic. We offer DIY service on select days of the week.
+  source: "issue #21 by @jordyarms"
+- name: BikeChain
+  url: https://bikechain.ca
+  description: Bikechain is a Do-It-Yourself community bike space serving downtown Toronto. They operate a Monday to Friday, pay-what-you-can repair centre where experienced mechanics teach you to repair your bike on the spot, no experience required! You can visit them for affordable bike repairs, free bike rentals for students, workshops and events, group rides, and more.
+  source: "issue #20 by @jordyarms"
