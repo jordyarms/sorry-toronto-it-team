@@ -1,5 +1,5 @@
 name: "Add community"
-description: "Propose a community to append to _data/communities.yml"
+description: "Propose a community to add to the _communities collection"
 title: "Add community: <name>"
 labels: ["community:proposal"]
 body:
@@ -29,3 +29,12 @@ body:
       placeholder: One-liner describing the community.
     validations:
       required: true
+
+  - type: input
+    id: tags
+    attributes:
+      label: Tags
+      description: Comma-separated tags to categorize this community (optional). Use namespaces like "type/coworking-space" or "for/social-good".
+      placeholder: e.g., type/coworking-space, for/startups, location/downtown
+    validations:
+      required: false
