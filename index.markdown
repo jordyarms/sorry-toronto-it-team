@@ -3,7 +3,7 @@ layout: base
 title: Home
 ---
 
-<p>This is a lightweight directory. Last Update: <code>{{ site.time | date: "%B %d, %Y %H:%M %Z" }}</code></p>
+<p>This is a lightweight directory. Last Update: <code>{{ site.time | date: "%B %d, %Y %H:%M %Z" }}</code> · Count of listings: <code>{{ site.data.communities | size }}</code></p>
 
 <p>Add or edit entries:</p>
 <ol>
