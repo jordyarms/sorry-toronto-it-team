@@ -8,3 +8,48 @@ small {
   font-size: 0.6rem;
   line-height: 0.6rem;
 }
+
+.tag {
+  background: var(--pico-primary-inverse);
+  border-radius: var(--pico-border-radius);
+  border-color: var(--pico-primary-border);
+  border-width: var(--pico-border-width);
+  border-style: solid;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.6rem;
+  color: var(--pico-primary);
+  margin-right: calc(var(--pico-nav-element-spacing-horizontal) / 2);
+}
+
+#filter-bar {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+#controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.filter-btn,
+.filter-toggle {
+  cursor: pointer;
+  background: var(--pico-primary-inverse);
+  border-radius: var(--pico-border-radius);
+  border-color: var(--pico-primary-border);
+  border-width: var(--pico-border-width);
+  border-style: solid;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.6rem;
+  color: var(--pico-primary);
+}
+
+.filter-btn.active {
+  background: var(--pico-primary-background);
+
+  color: var(--pico-primary-inverse);
+}
