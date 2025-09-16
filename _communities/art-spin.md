@@ -5,6 +5,8 @@ description: "Art Spin is an organization that presents exceptional contemporary
 source: "issue #32 by @jordyarms"
 tags:
   - "type/event-series"
+  - for/arts
+  - for/cycling
 ---
 
 <!-- Community added from GitHub issue #32 -->
