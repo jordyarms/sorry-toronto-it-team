@@ -19,16 +19,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install yq
-        uses: mikefarah/yq@v4.44.3
-
-      - name: Ensure data file exists and is a YAML array
+      - name: Ensure communities directory exists
         run: |
-          mkdir -p _data
-          [ -f _data/communities.yml ] || echo "[]" > _data/communities.yml
-          # Ensure it's a YAML sequence (array)
-          yq -e 'tag == "!!seq"' _data/communities.yml >/dev/null \
-            || { echo "_data/communities.yml must be a YAML array"; exit 1; }
+          mkdir -p _communities
 
       - name: Parse Issue Form
         id: issue-parser
@@ -36,31 +29,68 @@ jobs:
         with:
           template-path: .github/ISSUE_TEMPLATE/add_community.yml
 
-      - name: Validate fields
+      - name: Validate fields and create filename
         run: |
           NAME="${{ steps.issue-parser.outputs.issueparser_name }}"
           URL="${{ steps.issue-parser.outputs.issueparser_url }}"
           DESC="${{ steps.issue-parser.outputs.issueparser_description }}"
+          TAGS="${{ steps.issue-parser.outputs.issueparser_tags }}"
 
-          [ -n "$NAME" ] && [ -n "$URL" ] && [ -n "$DESC" ] || { echo "Missing fields"; exit 1; }
+          [ -n "$NAME" ] && [ -n "$URL" ] && [ -n "$DESC" ] || { echo "Missing required fields"; exit 1; }
           # Require http(s):// followed by at least one more character (reject bare 'http://')
           echo "$URL" | grep -Eqi '^https?://.+' || { echo "URL must start with http(s)://"; exit 1; }
+
+          # Create a filename-safe version of the name
+          FILENAME=$(echo "$NAME" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/^-\|-$//g')
+          # Ensure filename is not empty and add .md extension
+          [ -n "$FILENAME" ] || FILENAME="community-${{ github.event.issue.number }}"
+          FILENAME="${FILENAME}.md"
 
           echo "NAME=$NAME" >> "$GITHUB_ENV"
           echo "URL=$URL" >> "$GITHUB_ENV"
           echo "DESC=$DESC" >> "$GITHUB_ENV"
+          echo "TAGS=$TAGS" >> "$GITHUB_ENV"
+          echo "FILENAME=$FILENAME" >> "$GITHUB_ENV"
 
-      - name: Append entry
+      - name: Create community markdown file
         env:
           SOURCE: "issue #${{ github.event.issue.number }} by @${{ github.event.issue.user.login }}"
         run: |
-          # yq v4: no --quote flag. This appends a mapping to the YAML array.
-          yq -o=yaml -i '. += [{
-            "name": strenv(NAME),
-            "url": strenv(URL),
-            "description": strenv(DESC),
-            "source": strenv(SOURCE)
-          }]' _data/communities.yml
+          # Create the markdown file with YAML frontmatter
+          cat > "_communities/${{ env.FILENAME }}" << 'EOF'
+          ---
+          name: "${{ env.NAME }}"
+          url: "${{ env.URL }}"
+          description: "${{ env.DESC }}"
+          source: "${{ env.SOURCE }}"
+          tags:
+          EOF
+
+          # Process tags if provided
+          if [ -n "${{ env.TAGS }}" ]; then
+            # Split tags by comma and create YAML array
+            echo "${{ env.TAGS }}" | tr ',' '\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | while read -r tag; do
+              if [ -n "$tag" ]; then
+                echo "  - \"$tag\"" >> "_communities/${{ env.FILENAME }}"
+              fi
+            done
+          else
+            # Add empty array if no tags
+            echo "  []" >> "_communities/${{ env.FILENAME }}"
+          fi
+
+          # Add closing frontmatter delimiter
+          echo "---" >> "_communities/${{ env.FILENAME }}"
+
+          # Optional: Add content body (can be empty or contain additional info)
+          echo "" >> "_communities/${{ env.FILENAME }}"
+          echo "<!-- Community added from GitHub issue #${{ github.event.issue.number }} -->" >> "_communities/${{ env.FILENAME }}"
+
+      - name: Verify file creation
+        run: |
+          echo "Created file: _communities/${{ env.FILENAME }}"
+          echo "File contents:"
+          cat "_communities/${{ env.FILENAME }}"
 
       - name: Create or update PR (draft = approval gate)
         uses: peter-evans/create-pull-request@v6
@@ -75,10 +105,12 @@ jobs:
             - **Name:** ${{ env.NAME }}
             - **URL:**  ${{ env.URL }}
             - **Description:** ${{ env.DESC }}
+            - **Tags:** ${{ env.TAGS }}
             - **Source:** issue #${{ github.event.issue.number }} by @${{ github.event.issue.user.login }}
+            - **File:** `_communities/${{ env.FILENAME }}`
 
             Maintainers: review/merge to incorporate.
           labels: community:automation
-          add-paths: _data/communities.yml
+          add-paths: _communities/
           draft: true
           delete-branch: false
