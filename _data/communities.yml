@@ -113,8 +113,36 @@
 - name: The Centre for Social Innovation
   url: https://socialinnovation.org
   description: The Centre for Social Innovation is the home for the Next Economy. We're a community launchpad for people and enterprises who are proving that solutions are possible. The CSI community is home to over 1,000 nonprofits, charities, and social ventures that employ over 3,000 people and generate combined annual revenues of around 50 million. CSI members are turning social, environmental, and economic challenges into opportunities to create the Next Economy.
-  source: 'issue #24 by @jordyarms'
+  source: "issue #24 by @jordyarms"
 - name: Fuckup Nights Toronto
   url: https://www.fuckupnightsto.ca
   description: Fuckup Nights Toronto is a speaker series and community that shares stories of professional failure. Failure is a part of any success story, but we don't talk about it enough. We’re here to break down stigmas, and amplify the message that failure is healthy and essential to learning and growing.
-  source: 'issue #26 by @jordyarms'
+  source: "issue #26 by @jordyarms"
+- name: DcideontheBside
+  url: https://www.instagram.com/michaellouisjohnson/
+  description: "D-cide on the B-side at the Communist’s Daughter (A drunken whole-room divebar music debate)"
+  source: "https://torontoeventgenerator.substack.com/about"
+- name: HotBreath
+  url: https://www.instagram.com/hotbreath/
+  description: "WITHOUT YOU, WE'RE NOTHING. WITHOUT US, YOU'RE STILL IN THE SHOWER. WE KNOW THAT SOMETIMES YOU'VE JUST GOT TO LET IT OUT. THAT'S WHY WE'RE HERE. HOT BREATH KARAOKE HAS BEEN BATTLING AGAINST PERFECT PITCH AND ACCEPTABLE BEHAVIOUR SINCE 2004. IF YOU HAVE A VOICE, WE HAVE A MIC."
+  source: "https://torontoeventgenerator.substack.com/about"
+- name: "The Jean Darlene Piano Room"
+  url: https://www.instagram.com/jeandarlenepianoroom/
+  description: "a karaoke piano bar hidden down an alley behind a KFC"
+  source: "https://torontoeventgenerator.substack.com/about"
+- name: "Danu Social House"
+  url: https://www.danusocialhouse.ca
+  description: "When we started Danu in July 2022, we imagined a place where you could spark a conversation with a stranger, stumble across new art and ideas, and lend support to the organizations fighting for a better Toronto; a bar in a living room. Several times a week we host free events that bring people together: book clubs, food pop-ups, fundraisers, game nights, art shows, our famous house parties, and more. We also offer free space for grassroots organizations like Encampment Support Network Parkdale, Climate Justice Toronto and The People's Voice to hold meetings and fundraisers."
+  source: "https://torontoeventgenerator.substack.com/about"
+- name: The Disaster
+  url: https://www.instagram.com/thedisastershow/
+  description: "The Disaster puts on weird and unconventional comedy shows in Toronto."
+  source: "https://torontoeventgenerator.substack.com/about"
+- name: "Authentic Relating Toronto"
+  url: http://www.circling.ca
+  description: "ART is a personal-growth oriented organization and community who's mindful practices and spaces often revolve around exploring someone else's world and speaking our truth in relationship with others."
+  source: "https://torontoeventgenerator.substack.com/about"
+- name: "Dinner with Strangers"
+  url: "https://www.instagram.com/withstrangersco/"
+  description: "Purpose-driven events, dinners & experiences / host, speaker & curator for brands, retreats & community Created by @jessjanz"
+  source: "https://torontoeventgenerator.substack.com"
