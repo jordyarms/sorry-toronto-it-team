@@ -76,7 +76,7 @@ title: Home
 <div class="grid-upgrade">
   {% assign sorted = site.communities | sort: "name" %}
   {% for c in sorted %}
-    {% include card.html name=c.name url=c.url description=c.description source=c.source tags=c.tags %}
+    {% include card.html name=c.name url=c.link description=c.description source=c.source tags=c.tags %}
   {% endfor %}
 </div>
 

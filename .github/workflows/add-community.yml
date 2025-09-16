@@ -60,7 +60,7 @@ jobs:
           cat > "_communities/${{ env.FILENAME }}" << 'EOF'
           ---
           name: "${{ env.NAME }}"
-          url: "${{ env.URL }}"
+          link: "${{ env.URL }}"
           description: "${{ env.DESC }}"
           source: "${{ env.SOURCE }}"
           tags:
@@ -103,7 +103,7 @@ jobs:
 
             **Proposed entry**
             - **Name:** ${{ env.NAME }}
-            - **URL:**  ${{ env.URL }}
+            - **Link:**  ${{ env.URL }}
             - **Description:** ${{ env.DESC }}
             - **Tags:** ${{ env.TAGS }}
             - **Source:** issue #${{ github.event.issue.number }} by @${{ github.event.issue.user.login }}
