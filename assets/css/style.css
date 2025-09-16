@@ -10,7 +10,7 @@ small {
 }
 
 .tag {
-  background: var(--pico-primary-inverse);
+  background: none;
   border-radius: var(--pico-border-radius);
   border-color: var(--pico-primary-border);
   border-width: var(--pico-border-width);
@@ -38,7 +38,7 @@ small {
 .filter-btn,
 .filter-toggle {
   cursor: pointer;
-  background: var(--pico-primary-inverse);
+  background: none;
   border-radius: var(--pico-border-radius);
   border-color: var(--pico-primary-border);
   border-width: var(--pico-border-width);
