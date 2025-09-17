@@ -5,7 +5,8 @@ description: "Zine Dream is an annual small press art fair that is held in Toron
 source: "issue #40 by @jordyarms"
 tags:
   - "type/event"
-  - "for/arts"
+  - "for/art"
+  - "for/zines"
 ---
 
 <!-- Community added from GitHub issue #40 -->

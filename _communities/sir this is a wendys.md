@@ -4,5 +4,6 @@ description: "\U0001F4CDtoronto | creative socials that build communities \U0001
 source: https://lightmorning.substack.com/p/weave-report-summer-2025-edition
 tags:
   - type/event-series
+  - for/creativity
 link: https://www.instagram.com/sir_tisawendys/
 ---

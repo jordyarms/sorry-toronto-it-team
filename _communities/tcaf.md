@@ -5,7 +5,8 @@ description: "Considered to be amongst the premier comic arts festivals in the w
 source: "issue #38 by @jordyarms"
 tags:
   - "type/event"
-  - "for/arts"
+  - "for/art"
+  - "for/zines"
 ---
 
 <!-- Community added from GitHub issue #38 -->

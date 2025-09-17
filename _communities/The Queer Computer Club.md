@@ -4,5 +4,6 @@ description: The Queer Computer Club is a non-profit, multidisciplinary tech-art
 source: "@admin included 2025-08-29"
 tags:
   - type/coworking-space
+  - for/technology
 link: https://queercomputerclub.ca
 ---

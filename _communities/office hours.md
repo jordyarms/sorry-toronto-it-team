@@ -4,5 +4,6 @@ description: Weekly public gathering every Friday at Victory Cafe (Bloor+Bathurs
 source: https://lightmorning.substack.com/p/weave-report-summer-2025-edition
 tags:
   - type/event-series
+  - for/networking
 link: https://officehours.bar/
 ---
