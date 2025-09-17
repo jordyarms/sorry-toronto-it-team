@@ -5,7 +5,7 @@ description: "Canada’s Most Connected Tech Community. Meet leaders, share idea
 source: "issue #42 by @jordyarms"
 tags:
   - "type/event-series"
-  - "for/tech"
+  - "for/technology"
   - "for/networking"
 ---
 
