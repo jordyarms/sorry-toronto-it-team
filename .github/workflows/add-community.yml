@@ -57,51 +57,51 @@ jobs:
       - name: Create community markdown file
         env:
           SOURCE: "issue #${{ github.event.issue.number }} by @${{ github.event.issue.user.login }}"
+          GITHUB_EVENT_ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
-          # Create temp file for safe YAML generation
-          cat > temp_community.md << 'YAML_EOF'
-          ---
-          YAML_EOF
+          # Create a Python script to safely generate YAML
+          cat > generate_yaml.py << 'PYTHON_EOF'
+          import os
+          import yaml
+          import sys
 
-          # Use yq to safely add fields with proper YAML escaping
-          # Install yq if not available
-          if ! command -v yq &> /dev/null; then
-            sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
-            sudo chmod +x /usr/local/bin/yq
-          fi
+          # Get environment variables
+          name = os.getenv('NAME', '')
+          url = os.getenv('URL', '')
+          desc = os.getenv('DESC', '')
+          tags_str = os.getenv('TAGS', '')
+          source = os.getenv('SOURCE', '')
+          filename = os.getenv('FILENAME', '')
 
-          # Build YAML safely with yq
-          yq eval --null-input \
-            --arg name "$NAME" \
-            --arg url "$URL" \
-            --arg desc "$DESC" \
-            --arg source "$SOURCE" \
-            '{
-              "name": $name,
-              "link": $url, 
-              "description": $desc,
-              "source": $source,
-              "tags": []
-            }' > temp_frontmatter.yml
+          # Process tags
+          tags = []
+          if tags_str:
+              tags = [tag.strip() for tag in tags_str.split(',') if tag.strip()]
 
-          # Add tags if provided
-          if [ -n "$TAGS" ]; then
-            echo "$TAGS" | tr ',' '\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | while read -r tag; do
-              if [ -n "$tag" ]; then
-                yq eval -i ".tags += [\"$tag\"]" temp_frontmatter.yml
-              fi
-            done
-          fi
+          # Create data structure
+          data = {
+              'name': name,
+              'link': url,
+              'description': desc,
+              'source': source,
+              'tags': tags
+          }
 
-          # Combine into final markdown file
-          echo "---" > "_communities/$FILENAME"
-          yq eval '.' temp_frontmatter.yml >> "_communities/$FILENAME"
-          echo "---" >> "_communities/$FILENAME"
-          echo "" >> "_communities/$FILENAME"
-          echo "<!-- Community added from GitHub issue #${{ github.event.issue.number }} -->" >> "_communities/$FILENAME"
+          # Generate YAML content
+          yaml_content = yaml.dump(data, default_flow_style=False, allow_unicode=True, sort_keys=False)
 
-          # Cleanup
-          rm temp_frontmatter.yml
+          # Write to file
+          with open(f'_communities/{filename}', 'w', encoding='utf-8') as f:
+              f.write('---\n')
+              f.write(yaml_content)
+              f.write('---\n\n')
+              f.write(f'<!-- Community added from GitHub issue #{os.getenv("GITHUB_EVENT_ISSUE_NUMBER", "")} -->\n')
+
+          print(f"Successfully created _communities/{filename}")
+          PYTHON_EOF
+
+          # Run the Python script
+          python3 generate_yaml.py
 
       - name: Verify file creation
         run: |
