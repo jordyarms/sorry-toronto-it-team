@@ -31,6 +31,7 @@ jobs:
 
       - name: Validate fields and create filename
         run: |
+          # Use environment variables to safely handle special characters
           NAME="${{ steps.issue-parser.outputs.issueparser_name }}"
           URL="${{ steps.issue-parser.outputs.issueparser_url }}"
           DESC="${{ steps.issue-parser.outputs.issueparser_description }}"
@@ -46,45 +47,61 @@ jobs:
           [ -n "$FILENAME" ] || FILENAME="community-${{ github.event.issue.number }}"
           FILENAME="${FILENAME}.md"
 
-          echo "NAME=$NAME" >> "$GITHUB_ENV"
-          echo "URL=$URL" >> "$GITHUB_ENV"
-          echo "DESC=$DESC" >> "$GITHUB_ENV"
-          echo "TAGS=$TAGS" >> "$GITHUB_ENV"
-          echo "FILENAME=$FILENAME" >> "$GITHUB_ENV"
+          # Use printf to safely write to GITHUB_ENV with proper escaping
+          printf 'NAME<<%s\n%s\n%s\n' "EOF_$(date +%s)" "$NAME" "EOF_$(date +%s)" >> "$GITHUB_ENV"
+          printf 'URL<<%s\n%s\n%s\n' "EOF_$(date +%s)" "$URL" "EOF_$(date +%s)" >> "$GITHUB_ENV"
+          printf 'DESC<<%s\n%s\n%s\n' "EOF_$(date +%s)" "$DESC" "EOF_$(date +%s)" >> "$GITHUB_ENV"
+          printf 'TAGS<<%s\n%s\n%s\n' "EOF_$(date +%s)" "$TAGS" "EOF_$(date +%s)" >> "$GITHUB_ENV"
+          printf 'FILENAME<<%s\n%s\n%s\n' "EOF_$(date +%s)" "$FILENAME" "EOF_$(date +%s)" >> "$GITHUB_ENV"
 
       - name: Create community markdown file
         env:
           SOURCE: "issue #${{ github.event.issue.number }} by @${{ github.event.issue.user.login }}"
         run: |
-          # Create the markdown file with YAML frontmatter
-          cat > "_communities/${{ env.FILENAME }}" << 'EOF'
+          # Create temp file for safe YAML generation
+          cat > temp_community.md << 'YAML_EOF'
           ---
-          name: "${{ env.NAME }}"
-          link: "${{ env.URL }}"
-          description: "${{ env.DESC }}"
-          source: "${{ env.SOURCE }}"
-          tags:
-          EOF
+          YAML_EOF
 
-          # Process tags if provided
-          if [ -n "${{ env.TAGS }}" ]; then
-            # Split tags by comma and create YAML array
-            echo "${{ env.TAGS }}" | tr ',' '\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | while read -r tag; do
-              if [ -n "$tag" ]; then
-                echo "  - \"$tag\"" >> "_communities/${{ env.FILENAME }}"
-              fi
-            done
-          else
-            # Add empty array if no tags
-            echo "  []" >> "_communities/${{ env.FILENAME }}"
+          # Use yq to safely add fields with proper YAML escaping
+          # Install yq if not available
+          if ! command -v yq &> /dev/null; then
+            sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+            sudo chmod +x /usr/local/bin/yq
           fi
 
-          # Add closing frontmatter delimiter
-          echo "---" >> "_communities/${{ env.FILENAME }}"
+          # Build YAML safely with yq
+          yq eval --null-input \
+            --arg name "$NAME" \
+            --arg url "$URL" \
+            --arg desc "$DESC" \
+            --arg source "$SOURCE" \
+            '{
+              "name": $name,
+              "link": $url, 
+              "description": $desc,
+              "source": $source,
+              "tags": []
+            }' > temp_frontmatter.yml
 
-          # Optional: Add content body (can be empty or contain additional info)
-          echo "" >> "_communities/${{ env.FILENAME }}"
-          echo "<!-- Community added from GitHub issue #${{ github.event.issue.number }} -->" >> "_communities/${{ env.FILENAME }}"
+          # Add tags if provided
+          if [ -n "$TAGS" ]; then
+            echo "$TAGS" | tr ',' '\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | while read -r tag; do
+              if [ -n "$tag" ]; then
+                yq eval -i ".tags += [\"$tag\"]" temp_frontmatter.yml
+              fi
+            done
+          fi
+
+          # Combine into final markdown file
+          echo "---" > "_communities/$FILENAME"
+          yq eval '.' temp_frontmatter.yml >> "_communities/$FILENAME"
+          echo "---" >> "_communities/$FILENAME"
+          echo "" >> "_communities/$FILENAME"
+          echo "<!-- Community added from GitHub issue #${{ github.event.issue.number }} -->" >> "_communities/$FILENAME"
+
+          # Cleanup
+          rm temp_frontmatter.yml
 
       - name: Verify file creation
         run: |
