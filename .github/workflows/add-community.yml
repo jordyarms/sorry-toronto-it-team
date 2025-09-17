@@ -47,12 +47,12 @@ jobs:
           [ -n "$FILENAME" ] || FILENAME="community-${{ github.event.issue.number }}"
           FILENAME="${FILENAME}.md"
 
-          # Use printf to safely write to GITHUB_ENV with proper escaping
-          printf 'NAME<<%s\n%s\n%s\n' "EOF_$(date +%s)" "$NAME" "EOF_$(date +%s)" >> "$GITHUB_ENV"
-          printf 'URL<<%s\n%s\n%s\n' "EOF_$(date +%s)" "$URL" "EOF_$(date +%s)" >> "$GITHUB_ENV"
-          printf 'DESC<<%s\n%s\n%s\n' "EOF_$(date +%s)" "$DESC" "EOF_$(date +%s)" >> "$GITHUB_ENV"
-          printf 'TAGS<<%s\n%s\n%s\n' "EOF_$(date +%s)" "$TAGS" "EOF_$(date +%s)" >> "$GITHUB_ENV"
-          printf 'FILENAME<<%s\n%s\n%s\n' "EOF_$(date +%s)" "$FILENAME" "EOF_$(date +%s)" >> "$GITHUB_ENV"
+          # Write to temporary files to avoid shell escaping issues
+          echo "$NAME" > /tmp/name.txt
+          echo "$URL" > /tmp/url.txt
+          echo "$DESC" > /tmp/desc.txt
+          echo "$TAGS" > /tmp/tags.txt
+          echo "$FILENAME" > /tmp/filename.txt
 
       - name: Create community markdown file
         env:
@@ -61,17 +61,23 @@ jobs:
         run: |
           # Create a Python script to safely generate YAML
           cat > generate_yaml.py << 'PYTHON_EOF'
-          import os
           import yaml
           import sys
+          import os
 
-          # Get environment variables
-          name = os.getenv('NAME', '')
-          url = os.getenv('URL', '')
-          desc = os.getenv('DESC', '')
-          tags_str = os.getenv('TAGS', '')
+          # Read from temporary files to avoid shell escaping issues
+          with open('/tmp/name.txt', 'r', encoding='utf-8') as f:
+              name = f.read().strip()
+          with open('/tmp/url.txt', 'r', encoding='utf-8') as f:
+              url = f.read().strip()
+          with open('/tmp/desc.txt', 'r', encoding='utf-8') as f:
+              desc = f.read().strip()
+          with open('/tmp/tags.txt', 'r', encoding='utf-8') as f:
+              tags_str = f.read().strip()
+          with open('/tmp/filename.txt', 'r', encoding='utf-8') as f:
+              filename = f.read().strip()
+
           source = os.getenv('SOURCE', '')
-          filename = os.getenv('FILENAME', '')
 
           # Process tags
           tags = []
@@ -105,26 +111,42 @@ jobs:
 
       - name: Verify file creation
         run: |
-          echo "Created file: _communities/${{ env.FILENAME }}"
+          FILENAME=$(cat /tmp/filename.txt)
+          echo "Created file: _communities/$FILENAME"
           echo "File contents:"
-          cat "_communities/${{ env.FILENAME }}"
+          cat "_communities/$FILENAME"
 
       - name: Create or update PR (draft = approval gate)
+        run: |
+          NAME=$(cat /tmp/name.txt)
+          URL=$(cat /tmp/url.txt)
+          DESC=$(cat /tmp/desc.txt)
+          TAGS=$(cat /tmp/tags.txt)
+          FILENAME=$(cat /tmp/filename.txt)
+
+          # Set environment variables for the action
+          echo "COMMUNITY_NAME=$NAME" >> $GITHUB_ENV
+          echo "COMMUNITY_URL=$URL" >> $GITHUB_ENV
+          echo "COMMUNITY_DESC=$DESC" >> $GITHUB_ENV
+          echo "COMMUNITY_TAGS=$TAGS" >> $GITHUB_ENV
+          echo "COMMUNITY_FILENAME=$FILENAME" >> $GITHUB_ENV
+
+      - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
           branch: "add-community/issue-${{ github.event.issue.number }}"
           commit-message: "Add community from issue #${{ github.event.issue.number }}"
-          title: "Add community: ${{ env.NAME }} (from #${{ github.event.issue.number }})"
+          title: "Add community: ${{ env.COMMUNITY_NAME }} (from #${{ github.event.issue.number }})"
           body: |
             Generated from issue #${{ github.event.issue.number }}.
 
             **Proposed entry**
-            - **Name:** ${{ env.NAME }}
-            - **Link:**  ${{ env.URL }}
-            - **Description:** ${{ env.DESC }}
-            - **Tags:** ${{ env.TAGS }}
+            - **Name:** ${{ env.COMMUNITY_NAME }}
+            - **URL:**  ${{ env.COMMUNITY_URL }}
+            - **Description:** ${{ env.COMMUNITY_DESC }}
+            - **Tags:** ${{ env.COMMUNITY_TAGS }}
             - **Source:** issue #${{ github.event.issue.number }} by @${{ github.event.issue.user.login }}
-            - **File:** `_communities/${{ env.FILENAME }}`
+            - **File:** `_communities/${{ env.COMMUNITY_FILENAME }}`
 
             Maintainers: review/merge to incorporate.
           labels: community:automation
