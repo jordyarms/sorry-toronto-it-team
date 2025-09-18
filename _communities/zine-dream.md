@@ -4,7 +4,7 @@ link: "http://zinedream.com/"
 description: "Zine Dream is an annual small press art fair that is held in Toronto."
 source: "issue #40 by @jordyarms"
 tags:
-  - "type/event"
+  - "type/annual-event"
   - "for/art"
   - "for/zines"
 ---
