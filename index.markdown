@@ -5,13 +5,25 @@ title: Home
 
 <details name="about">
   <summary>About</summary>
-
-<p>This is a lightweight directory of Toronto's various communities. Last Update: <code>{{ site.time | date: "%B %d, %Y %H:%M %Z" }}</code> · Count of listings: <code>{{ site.communities | size }}</code></p>
+  <p>This is a lightweight directory of Toronto's various communities. It is intended to facilitate the discovery of communities in Toronto and as serve as an example of community centred data.</p> 
+  <p>Currently in early development, the data structure and directory content will be evolving as requirements and insights emerge.</p> 
+  <p>This initiative is an open collaboration. You are welcome to contribute. To get involved or learn more please come to Civic Tech Toronto's hacknights on Tuesday evenings, or 1RG's monthly Civic Sundays.</p>
+  <p>For ease of access you can get the directory in <code>JSON</code> or <code>CSV</code> formats from the following:</p>
+  <ul>
+  <li><a href="{{"/all.csv" | relative_url }}">all.csv</a></li>
+  <li><a href="{{"/all.json" | relative_url }}">all.json</a></li>
+  </ul>
+  <p>Last Update: <code>{{ site.time | date: "%B %d, %Y %H:%M %Z" }}</code></p>
+  <p>Count of listings: <code>{{ site.communities | size }}</code></p>
+</details>
+<hr/>
+<details name="additions">
+  <summary>Make an addition</summary>
 
 <p>Add or edit entries:</p>
 <ol>
 <li>by using the <a href="https://github.com/CivicTechTO/toronto-community-directory/issues/new?template=add_community.yml
-">add a community</a> issue form template on github</li>
+">add a community</a> issue form template on github.</li>
 <li>by including a record in <code>_communities</code> on <a href="https://github.com/CivicTechTO/toronto-community-directory">CivicTechTO/toronto-community-directory</a>.</li>
 </ol>
 </details>
@@ -32,7 +44,7 @@ title: Home
 {% assign namespaces = namespaces | sort %}
 
 <details name="filters">
-  <summary>Filter Controls</summary>
+  <summary>⟡ Filter Controls</summary>
   <div id="filter-bar">
     <div>
       <button class="filter-btn active" data-filter="all">Show All</button>

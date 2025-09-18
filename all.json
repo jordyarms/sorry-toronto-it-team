@@ -1,0 +1,19 @@
+---
+layout: null
+permalink: /all.json
+---
+{
+  "count": {{ site.communities | size }},
+  "generated": "{{ site.time | date_to_xmlschema }}",
+  "communities": [
+    {%- for community in site.communities -%}
+    {
+      "name": {{ community.name | jsonify }},
+      "link": {{ community.link | jsonify }},
+      "description": {{ community.description | jsonify }},
+      "tags": {{ community.tags | jsonify }},
+      "source": {{ community.source | jsonify }}
+    }{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ]
+}

@@ -1,0 +1,8 @@
+---
+layout: null
+permalink: /all.csv
+---
+name,link,description,tags,source
+{% for community in site.communities -%}
+"{{ community.name | replace: '"', '""' }}","{{ community.link }}","{{ community.description | replace: '"', '""' }}","{{ community.tags | join: ';' | replace: '"', '""' }}","{{ community.source | replace: '"', '""' }}"
+{% endfor -%}
