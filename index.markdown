@@ -44,7 +44,7 @@ title: Home
 {% assign namespaces = namespaces | sort %}
 
 <details name="filters">
-  <summary>⟡ Filter Controls</summary>
+  <summary>Filter Controls</summary>
   <div id="filter-bar">
     <div>
       <button class="filter-btn active" data-filter="all">Show All</button>
