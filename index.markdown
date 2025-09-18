@@ -13,8 +13,6 @@ title: Home
   <li><a href="{{"/all.csv" | relative_url }}">all.csv</a></li>
   <li><a href="{{"/all.json" | relative_url }}">all.json</a></li>
   </ul>
-  <p>Last Update: <code>{{ site.time | date: "%B %d, %Y %H:%M %Z" }}</code></p>
-  <p>Count of listings: <code>{{ site.communities | size }}</code></p>
 </details>
 <hr/>
 <details name="additions">
