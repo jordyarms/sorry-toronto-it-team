@@ -5,6 +5,6 @@ description: CONTACT is a Toronto based non-profit organization dedicated to exh
 source: admin
 tags:
   - type/annual-event
-  - for/arts
+  - for/art
   - for/photography
 ---

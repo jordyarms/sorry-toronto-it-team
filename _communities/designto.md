@@ -5,6 +5,6 @@ description: DesignTO is a non-profit arts and culture organization that believe
 source: admin
 tags:
   - type/annual-event
-  - for/arts
+  - for/art
   - for/design
 ---

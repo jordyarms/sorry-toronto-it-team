@@ -5,5 +5,5 @@ description: Join in a free all-night celebration of contemporary art that trans
 source: admin
 tags:
   - type/annual-event
-  - for/arts
+  - for/art
 ---
