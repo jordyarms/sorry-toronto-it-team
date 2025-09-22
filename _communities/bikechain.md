@@ -6,4 +6,9 @@ tags:
   - type/maker-space
   - for/dyi-bike-repair
 link: https://bikechain.ca
+address:
+  streetAddress: 230 College Street
+  addressLocality: Toronto
+  addressRegion: ON
+  postalCode: M5T 1R2
 ---

@@ -10,6 +10,11 @@ tags:
   - audience/goths
   - for/music
   - for/dancing
+address:
+  streetAddress: 1279 Queen Street West
+  addressLocality: Toronto
+  addressRegion: ON
+  postalCode: M6K 1L6
 ---
 
 <!-- Community added from GitHub issue #68 -->

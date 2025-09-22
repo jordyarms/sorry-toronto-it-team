@@ -6,4 +6,9 @@ tags:
   - type/maker-space
   - for/dyi-bike-repair
 link: https://www.bikesauce.org
+address:
+  streetAddress: 341 Broadview Avenue
+  addressLocality: Toronto
+  addressRegion: ON
+  postalCode: M4M 2H1
 ---

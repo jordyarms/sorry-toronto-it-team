@@ -5,4 +5,9 @@ source: "@admin included 2025-08-29"
 tags:
   - type/maker-space
 link: https://hacklab.to
+address:
+  streetAddress: 1677 St Clair Avenue West
+  addressLocality: Toronto
+  addressRegion: ON
+  postalCode: M6N 1H9
 ---

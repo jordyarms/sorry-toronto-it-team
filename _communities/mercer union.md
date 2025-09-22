@@ -7,4 +7,9 @@ tags:
   - type/organization
   - type/gallery
   - for/art
+address:
+  streetAddress: 1286 Bloor Street West
+  addressLocality: Toronto
+  addressRegion: ON
+  postalCode: M6H 1N9
 ---

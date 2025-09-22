@@ -6,4 +6,9 @@ tags:
   - type/event-space
   - type/coworking-space
 link: https://socialinnovation.org
+address:
+  streetAddress: 192 Spadina Avenue
+  addressLocality: Toronto
+  addressRegion: ON
+  postalCode: M5T 2C2
 ---

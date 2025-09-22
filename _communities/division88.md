@@ -7,4 +7,9 @@ tags:
   - type/venue
   - for/music
   - for/creativity
+address:
+  streetAddress: 225 Geary Avenue
+  addressLocality: Toronto
+  addressRegion: ON
+  postalCode: M6H 2C1
 ---
