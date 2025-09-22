@@ -6,4 +6,9 @@ tags:
   - type/event-space
   - type/coworking-space
 link: https://1rg.space/
+address:
+  streetAddress: 2567 Dundas Street West
+  addressLocality: Toronto
+  addressRegion: ON
+  postalCode: M6P 1X7
 ---
