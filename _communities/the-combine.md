@@ -1,10 +1,7 @@
 ---
 name: The Combine
 link: https://thecombine.io
-description:
-  SORT OF A PLACE, MOSTLY ABOUT PEOPLE, ALWAYS AN EXPERIMENT. We've redesigned
-  what an office is and does and means. Now we're looking for like-minded brands &
-  artists to takeover our space and help take this concept to the next level.
+description: "The Combine is an ongoing experiment in transforming a conventional office into a community-driven space that blends making, shopping, learning, & living."
 source: "issue #70 by @jordyarms"
 tags:
   - type/coworking-space
@@ -15,6 +12,9 @@ address:
   addressLocality: Toronto
   addressRegion: ON
   postalCode: M5V 3G7
+social:
+  instagram: https://www.instagram.com/thecombine_/
+  facebook: https://www.facebook.com/thecombine.io/
 ---
 
 <!-- Community added from GitHub issue #70 -->

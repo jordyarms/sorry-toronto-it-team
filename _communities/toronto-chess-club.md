@@ -1,14 +1,16 @@
 ---
 name: Toronto Chess Club
-link: https://torontochessclub.com
-description: This fall, get ready for chess clubs to change forever. We are so excited
-  to show the world how exciting, fun, and inclusive chess can be - stay tuned for
-  the revolution.
-source: 'issue #58 by @jordyarms'
+description: "Get ready to make your move at our soon-to-open chess club/cafébar, where strategy meets relaxation in every match. Stay tuned for grand opening announcements and prepare to experience chess like never before."
+source: "issue #58 by @jordyarms"
 tags:
-- type/club
-- for/play
-- for/chess
+  - type/club
+  - type/venue
+  - for/play
+  - for/chess
+  - for/drinking
+social:
+  facebook: https://www.facebook.com/TorontoChessClub/
+link: https://torontochessclub.com
 ---
 
 <!-- Community added from GitHub issue #58 -->

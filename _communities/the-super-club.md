@@ -1,10 +1,15 @@
 ---
-name:
-link: https://thesuperclub.ca
-description: "Superclub is a catalyst for change, championing inclusive leaders to create opportunities for all. There are far too many societal constraints, seen or unseen, that prohibit us from reaching new heights. We believe that when we gather, we inspire each other to dream bigger and unlock new possibilities. That, when we are together, we are unstoppable."
+name: Superclub
+description: "Superclub is a catalyst for change, championing inclusive leaders to create opportunities for all."
 source: admin
 tags:
   - type/organization
   - for/empowerment
   - for/networking
+  - for/leadership
+  - audience/bipoc-community
+link: https://thesuperclub.ca
+social:
+  instagram: https://www.instagram.com/welcometosuperclub/
+  linkedin: https://ca.linkedin.com/company/the-super-club
 ---

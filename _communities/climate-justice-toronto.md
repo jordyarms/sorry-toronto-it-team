@@ -1,14 +1,16 @@
 ---
 name: Climate Justice Toronto
-link: https://climatejusticeto.com
-description: 'Climate Justice Toronto is a grassroots group of young people across
-  the Greater Toronto Area who seek to build an irresistible* and powerful movement
-  to stop the climate crisis by confronting its root causes: capitalism, colonialism
-  and white supremacy.'
-source: 'issue #52 by @jordyarms'
+description: "Climate Justice Toronto (CJTO) is a membership-led democratic organization fighting for transformative class-based climate action in Toronto and beyond. We are organizing a multi-racial, working-class majority that will achieve a socialist future beyond capitalism, colonialism and white supremacy."
+source: "issue #52 by @jordyarms"
 tags:
-- type/organization
-- for/environmentalism
+  - type/organization
+  - for/environmentalism
+  - for/advocacy
+  - audience/youth
+link: https://climatejusticeto.com
+social:
+  instagram: https://www.instagram.com/climatejusticeto/
+  twitter: https://twitter.com/cjusticeto
 ---
 
 <!-- Community added from GitHub issue #52 -->

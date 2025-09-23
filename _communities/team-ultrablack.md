@@ -7,7 +7,7 @@ tags:
   - type/community
   - for/running
   - for/fitness
-  - for/mental-health
+  - for/well-being
   - audience/black-community
 link: https://www.teamultrablack.com
 address:

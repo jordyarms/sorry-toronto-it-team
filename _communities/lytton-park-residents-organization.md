@@ -1,10 +1,13 @@
 ---
 name: Lytton Park Residents' Organization
-link: https://lyttonparkro.ca
-description: ''
+description: "LPRO is a strong voice in the heart of Midtown Toronto and one of the city's most active residents groups. Inform. Connect. Advocate."
 source: bulk import
 tags:
-- type/neighbourhood-association
+  - type/neighbourhood-association
+  - for/municipal-issues
+  - for/advocacy
+  - for/volunteering
+link: https://lyttonparkro.ca
 ---
 
 <!-- Community added via bulk import -->

@@ -5,5 +5,14 @@ source: "https://torontoeventgenerator.substack.com/about"
 tags:
   - type/event-series
   - for/karaoke
-link: https://www.instagram.com/hotbreath/
+link: https://www.thehouseofhotbreath.com/
+address:
+  streetAddress: 159 Augusta Avenue
+  addressLocality: Toronto
+  addressRegion: ON
+  postalCode: M5T 2L4
+  note: "Primary venue: Handlebar (Wednesdays). Also hosts at other venues."
+social:
+  instagram: https://www.instagram.com/hotbreath/
+  website: https://www.thehouseofhotbreath.com/
 ---

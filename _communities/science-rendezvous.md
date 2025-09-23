@@ -1,11 +1,21 @@
 ---
 name: Science Rendezvous
-link: https://www.sciencerendezvous.ca
-description: "Science Rendezvous is a registered charitable organization dedicated to bringing exciting research and STEM experiences and programming to the public.  The Science Rendezvous namesake program is the annual free family festival that takes science out of the lab!"
+description: "Science Rendezvous is a registered charitable organization dedicated to creating unique learning experiences and bringing the joy of science to everyone. Science Rendezvous is an annual festival that takes science out of the lab and onto the street!"
 source: admin
 tags:
   - type/annual-event
   - for/science
   - for/learning
   - audience/families
+link: https://www.sciencerendezvous.ca
+address:
+  streetAddress: 100 St. George Street
+  addressLocality: Toronto
+  addressRegion: ON
+  postalCode: M5S 3G3
+social:
+  facebook: https://www.facebook.com/ScienceRendezvous/
+  instagram: https://www.instagram.com/sci_rendezvous/
+  twitter: https://twitter.com/sci_rendezvous
+  linkedin: https://ca.linkedin.com/company/science-rendezvous
 ---

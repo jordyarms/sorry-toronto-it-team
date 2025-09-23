@@ -1,15 +1,16 @@
 ---
 name: Toronto Dark Arts Market
-link: https://www.torontodarkartsmarket.com/
-description:
-  Toronto Dark Arts Market is a bi-monthly in-person marketplace dedicated
-  to all things weird and wonderful. Our artisan markets feature artists, artisans,
-  musicians, writers, and other makers of alternative goodness.
+description: "Toronto Dark Arts Market is a bi-monthly in-person marketplace dedicated to all things weird and wonderful. Our artisan markets feature artists, artisans, musicians, writers, and other makers of alternative goodness."
 source: "issue #66 by @jordyarms"
 tags:
-  - type/annual-event
+  - type/event-series
   - audience/goths
   - for/shopping
+  - for/art
+link: https://www.torontodarkartsmarket.com/
+social:
+  facebook: https://www.facebook.com/torontodarkartsmarket/
+  instagram: https://www.instagram.com/torontodarkartsmarket/
 ---
 
 <!-- Community added from GitHub issue #66 -->

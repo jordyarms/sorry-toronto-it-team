@@ -4,6 +4,12 @@ description: "Being and Becoming: A Community for the Curious is a Toronto based
 source: https://lightmorning.substack.com/p/weave-report-summer-2025-edition
 tags:
   - type/event-series
+  - type/organization
   - for/well-being
+  - for/philosophy
+  - for/personal-development
+  - for/community-building
 link: https://beingnbecoming.org/
+social:
+  instagram: https://www.instagram.com/beingnbecomingorg/
 ---

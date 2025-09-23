@@ -1,14 +1,20 @@
 ---
 name: Toronto Caribbean Carnival
-link: https://www.torontocarnival.ca
-description: The Toronto Caribbean Carnival (TCC) or Toronto Carnival, is a vibrant
-  and dynamic celebration of Caribbean culture, heritage, and artistry. Now in its
-  57th year, the Carnival is one of the largest cultural festivals in North America,
-  attracting millions of participants and spectators from around the world and contributing
-  over half a billion dollars to the Toronto economy.
-source: 'issue #74 by @jordyarms'
+description: "The Toronto Caribbean Carnival, formerly and commonly known as Caribana, is a festival of Caribbean culture and traditions held each summer in the city of Toronto, Ontario, Canada. It is a pan-Caribbean Carnival event and has been billed as North America's largest Festival, frequented by over 1.3 million tourists each year for the festival's Grand Parade and an overall attendance of 2.3 million."
+source: "issue #74 by @jordyarms"
 tags:
-- type/annual-event
+  - type/annual-event
+  - for/music
+  - for/dancing
+  - for/food
+link: https://www.torontocarnival.ca
+address:
+  streetAddress: Exhibition Place
+  addressLocality: Toronto
+  addressRegion: ON
+  postalCode: M6K 3C3
+social:
+  instagram: https://www.instagram.com/torontocarnival.ca/
 ---
 
 <!-- Community added from GitHub issue #74 -->

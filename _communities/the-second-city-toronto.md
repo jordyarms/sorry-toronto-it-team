@@ -1,17 +1,22 @@
 ---
 name: The Second City Toronto
-description: Drawing upon the groundbreaking work of The Second City and the many legendary performers who have played on its stages, we have become the largest school of improvisation and sketch comedy in the world. We welcome amateurs looking to try something new, and advanced players looking to hone their craft. Whether you're a business professional looking to improve your presentation skills or a student looking to meet new friends, The Second City Training Center is the place to be. We offer improv classes, acting classes, writing classes, and more.
+description: "The Second City is renown as the world's premier comedy theatre, with critically-acclaimed live improv and sketch comedy shows on stage every night. Enjoy a night of laughs and up-to-the-minute satire from the legendary comedy troupe that inspired Saturday Night Live, SCTV, and Whose Line Is It Anyway! The Second City's list of alumni include entertainment legends such as Martin Short, Eugene Levy, Gilda Radner, John Candy, Andrea Martin, Mike Myers, Colin Mochrie, and many more."
 source: "MCP Generative Addition"
 tags:
   - type/organization
   - type/venue
+  - type/theatre
   - for/improv
   - for/comedy
-  - audience/performers
-link: https://www.secondcity.com/classes/toronto
+  - for/sketch-comedy
+  - for/learning
+link: https://www.secondcity.com/shows/toronto
 address:
   streetAddress: 1 York Street
   addressLocality: Toronto
   addressRegion: ON
   postalCode: M5J 0B6
+social:
+  instagram: https://www.instagram.com/thesecondcityto/
+  facebook: https://www.facebook.com/TheSecondCityTO/
 ---

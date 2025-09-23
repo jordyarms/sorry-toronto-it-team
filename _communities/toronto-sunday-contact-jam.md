@@ -5,9 +5,7 @@ source: "MCP Generative Addition"
 tags:
   - type/event-series
   - for/improv
-  - for/dance
-  - for/movement
-  - audience/dancers
+  - for/dancing
 link: https://www.contactimprov.ca/on/toronto/sunday/
 address:
   streetAddress: 805 Dovercourt Road

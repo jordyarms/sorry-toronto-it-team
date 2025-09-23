@@ -1,10 +1,20 @@
 ---
 name: CONTACT
-link: https://contactphoto.com/
-description: CONTACT is a Toronto based non-profit organization dedicated to exhibiting, analyzing and celebrating photography and lens-based media through an annual festival that takes place every May.
+description: "CONTACT is a Toronto based non-profit organization dedicated to exhibiting, analyzing and celebrating photography and lens-based media through an annual festival that takes place every May."
 source: admin
 tags:
   - type/annual-event
+  - type/organization
   - for/art
   - for/photography
+link: https://contactphoto.com/
+address:
+  streetAddress: 80 Spadina Avenue, Suite 205
+  addressLocality: Toronto
+  addressRegion: ON
+  postalCode: M5V 2J4
+social:
+  instagram: https://www.instagram.com/contactphoto/
+  facebook: https://www.facebook.com/CONTACTPhotography/
+  twitter: https://twitter.com/contactphoto
 ---

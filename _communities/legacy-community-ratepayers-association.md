@@ -1,10 +1,17 @@
 ---
-name: Legacy Community Ratepayers’ Association
-link: http://www.legacynet.ca
-description: ''
+name: Legacy Community Ratepayers' Association
+description: "The Legacy Community Ratepayers' Association (LCRA) is for us, as neighbours, to work together for the care and benefit of our neighbourhood. The Legacy Community Ratepayers Association has an active membership and hosts an Annual General Meeting."
 source: bulk import
 tags:
-- type/neighbourhood-association
+  - type/neighbourhood-association
+  - for/municipal-issues
+  - for/advocacy
+link: http://www.legacynet.ca
+address:
+  note: "Boundaries: Highway 407 on the north; old ninth line on the east; 14th Avenue on the south; and Markham Green Golf course to the west."
+  addressLocality: Markham
+  addressRegion: ON
+published: false
 ---
 
 <!-- Community added via bulk import -->

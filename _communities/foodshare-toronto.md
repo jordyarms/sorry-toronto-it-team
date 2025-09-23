@@ -1,14 +1,21 @@
 ---
 name: FoodShare Toronto
-link: https://foodshare.net
-description: FoodShare Toronto is a food justice organization advocating for the right
-  to food and working to challenge the systemic barriers that keep people from accessing
-  the food they need to thrive.
-source: 'issue #78 by @jordyarms'
+description: "FoodShare Toronto advocates for the right to food and challenges the barriers to achieving food justice."
+source: "issue #78 by @jordyarms"
 tags:
-- type/organization
-- for/food
-- for/education
+  - type/organization
+  - for/food
+  - for/education
+  - for/advocacy
+link: https://foodshare.net
+address:
+  streetAddress: 120 Industry Street, Unit C
+  addressLocality: Toronto
+  addressRegion: ON
+  postalCode: M6M 4L8
+social:
+  instagram: https://www.instagram.com/foodshareto/
+  facebook: https://www.facebook.com/FoodShareTO/
 ---
 
 <!-- Community added from GitHub issue #78 -->

@@ -14,4 +14,6 @@ address:
   addressLocality: Toronto
   addressRegion: ON
   postalCode: M4Y 2C9
+social:
+  instagram: https://www.instagram.com/frontrunnerstoronto/
 ---

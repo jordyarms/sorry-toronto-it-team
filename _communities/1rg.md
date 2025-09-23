@@ -5,10 +5,15 @@ source: https://lightmorning.substack.com/p/weave-report-summer-2025-edition
 tags:
   - type/event-space
   - type/coworking-space
+  - type/intentional-community
+  - audience/technologists
 link: https://1rg.space/
 address:
   streetAddress: 2567 Dundas Street West
   addressLocality: Toronto
   addressRegion: ON
   postalCode: M6P 1X7
+social:
+  instagram: https://www.instagram.com/1rg.space
+  bluesky: https://bsky.app/profile/1rg.space
 ---
