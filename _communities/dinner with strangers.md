@@ -9,5 +9,5 @@ tags:
 link: "https://www.jessjanz.com/work-with-me-1"
 social:
   instagram: https://www.instagram.com/withstrangersco/
-  substack: https://jessjanz.substack.com/
+  # substack: https://jessjanz.substack.com/
 ---

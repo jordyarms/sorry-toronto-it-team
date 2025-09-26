@@ -17,7 +17,7 @@ address:
   postalCode: M6K 1L7
 social:
   instagram: https://www.instagram.com/shop.loohoo/
-  tiktok: https://www.tiktok.com/@shop.loohoo
+  # tiktok: https://www.tiktok.com/@shop.loohoo
 ---
 
 <!-- Community added from GitHub issue #72 -->

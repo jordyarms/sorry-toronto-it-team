@@ -6,7 +6,6 @@ tags:
   - type/neighbourhood-association
   - for/municipal-issues
   - for/advocacy
-  - audience/residents
 link: http://wellingtonplace.org
 address:
   streetAddress: 20 Niagara Street, Suite 402

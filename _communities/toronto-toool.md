@@ -13,8 +13,8 @@ address:
   addressLocality: Toronto
   addressRegion: ON
   postalCode: M6G 3T7
-social:
-  discord: https://discord.gg/fuamRhuAdD
+# social:
+# discord: https://discord.gg/fuamRhuAdD
 ---
 
 <!-- Community added from GitHub issue #54 -->

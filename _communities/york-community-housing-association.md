@@ -6,7 +6,6 @@ tags:
   - type/organization
   - for/municipal-issues
   - for/advocacy
-  - audience/residents
   - audience/post-secondary-students
 link: https://www.ycha.ca
 address:

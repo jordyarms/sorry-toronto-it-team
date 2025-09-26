@@ -15,5 +15,5 @@ address:
   note: "Entrance through alleyway behind KFC on Grove Avenue"
 social:
   instagram: https://www.instagram.com/jeandarlenepianoroom/
-  tiktok: https://www.tiktok.com/@jeandarlenepianoroom
+  # tiktok: https://www.tiktok.com/@jeandarlenepianoroom
 ---

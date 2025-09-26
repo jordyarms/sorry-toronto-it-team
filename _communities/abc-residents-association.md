@@ -7,6 +7,7 @@ tags:
   - for/municipal-issues
   - for/advocacy
   - for/volunteering
+
 link: http://www.abcra.ca
 address:
   streetAddress: 87 Avenue Road

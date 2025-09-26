@@ -1,21 +1,58 @@
-<div class="community-card" data-tags="{{ include.tags | join: ' ' }}">
+<div class="community-card" data-tags="{{ include.c.tags | join: ' ' }}">
   <article>
     <header>
-      <h3 style="margin-bottom: 0.25rem;"><a href="{{ include.url }}" target="_blank" rel="noopener">{{ include.name }}</a></h3>
-      {% if include.tags %}
+      <h3 style="margin-bottom: 0.25rem;">
+        <a href="{{ include.c.link | default: include.c.url }}" target="_blank" rel="noopener">
+          {{ include.c.name }}
+        </a>
+      </h3>
+
+      {% if include.c.tags %}
         <div class="tags">
-          {% for tag in include.tags %}
+          {% for tag in include.c.tags %}
             <span class="tag">{{ tag }}</span>
           {% endfor %}
         </div>
       {% endif %}
     </header>
-    {% if include.description %}
-      <p>{{ include.description }}</p>
+
+    {% if include.c.description %}
+      <p>{{ include.c.description }}</p>
     {% endif %}
+
+    {% if include.c.address %}
+      <address class="community-address">
+        {% if include.c.address.streetAddress %}{{ include.c.address.streetAddress }}<br>{% endif %}
+        {% if include.c.address.addressLocality %}{{ include.c.address.addressLocality }}, {% endif %}
+        {% if include.c.address.addressRegion %}{{ include.c.address.addressRegion }}{% endif %}
+        {% if include.c.address.postalCode %} {{ include.c.address.postalCode }}{% endif %}
+      </address>
+    {% endif %}
+
     <footer>
-      <small>url: <a href="{{ include.url }}">{{ include.url }}</a></small>
-      <small>source: {{ include.source }}</small>
+      {% if include.c.link or include.c.url %}
+        <small>
+          <a href="{{ include.c.link | default: include.c.url }}" target="_blank" rel="noopener">
+            {{ include.c.link | default: include.c.url }}
+          </a>
+        </small>
+      {% endif %}
+
+      {% if include.c.source %}
+        <small>source: {{ include.c.source }}</small>
+      {% endif %}
+
+      {% if include.c.social %}
+        <div class="social-icons">
+          {% for network in include.c.social %}
+            {% assign network_name = network[0] %}
+            {% assign network_url = network[1] %}
+            <a href="{{ network_url }}" target="_blank" rel="noopener" title="{{ network_name }}">
+              {% include icons/{{ network_name }}.svg %}
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
     </footer>
   </article>
 </div>

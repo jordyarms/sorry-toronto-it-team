@@ -16,5 +16,5 @@ social:
   instagram: https://www.instagram.com/division.88/
   facebook: https://www.facebook.com/thatsdivision88/
   twitter: https://x.com/thatsdivision88
-  soundcloud: https://soundcloud.com/division88
+  # soundcloud: https://soundcloud.com/division88
 ---

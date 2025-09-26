@@ -6,7 +6,6 @@ tags:
   - type/neighbourhood-association
   - for/municipal-issues
   - for/advocacy
-  - audience/residents
 link: https://www.westrouge.org
 address:
   streetAddress: 270 Rouge Hills Drive

@@ -7,6 +7,7 @@ tags:
   - for/technology
   - for/networking
   - for/entrepreneurship
+  - audience/technologists
 link: https://www.techto.org
 social:
   instagram: https://www.instagram.com/techtoorg/

@@ -6,6 +6,7 @@ tags:
   - type/event-series
   - for/technology
   - for/food
+  - audience/technologists
 link: https://mondays.pizza/
 address:
   streetAddress: 440 Bloor Street West
