@@ -2,7 +2,7 @@
 layout: null
 permalink: /all.csv
 ---
-name,link,description,tags,source
+name,link,description,tags,source,streetAddress,addressLocality,addressRegion,postalCode,social
 {% for community in site.communities -%}
-"{{ community.name | replace: '"', '""' }}","{{ community.link }}","{{ community.description | replace: '"', '""' }}","{{ community.tags | join: ';' | replace: '"', '""' }}","{{ community.source | replace: '"', '""' }}"
+"{{ community.name | replace: '"', '""' }}", "{{ community.link | default: community.url }}", "{{ community.description | replace: '"', '""' }}", "{{ community.tags | join: ';' | replace: '"', '""' }}", "{{ community.source | replace: '"', '""' }}", "{{ community.address.streetAddress | default: '' | replace: '"', '""' }}", "{{ community.address.postalCode | default: '' | replace: '"', '""' }}", "{% if community.social %}{% for network in community.social %}{{ network[0] }}={{ network[1] }}{% unless forloop.last %};{% endunless %}{% endfor %}{% endif %}"
 {% endfor -%}
