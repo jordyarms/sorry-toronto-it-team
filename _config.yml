@@ -1,8 +1,8 @@
 title: Toronto Communities Directory
 description: >- # this means to ignore newlines until "baseurl:"
   Toronto Communities Directory
-baseurl: "/toronto-community-directory" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://t0ronto.ca" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 plugins:
