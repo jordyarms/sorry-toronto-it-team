@@ -6,6 +6,7 @@ tags:
   - type/neighbourhood-association
   - for/municipal-issues
   - for/advocacy
+  - neighbourhood/guildwood
 link: http://www.guildwood.on.ca
 social:
   facebook: https://www.facebook.com/GVCA123/

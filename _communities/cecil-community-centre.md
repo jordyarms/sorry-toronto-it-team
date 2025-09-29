@@ -10,6 +10,7 @@ tags:
   - for/gardening
   - for/after-school
   - for/dancing
+  - neighbourhood/chinatown
 address:
   streetAddress: 58 Cecil Street
   addressLocality: Toronto

@@ -8,6 +8,7 @@ tags:
   - for/running
   - for/fitness
   - audience/post-secondary-students
+  - neighbourhood/u-of-t
 link: https://uoftrunclub.org
 address:
   streetAddress: 15 King's College Circle

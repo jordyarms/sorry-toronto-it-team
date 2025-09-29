@@ -6,6 +6,7 @@ tags:
   - type/neighbourhood-association
   - for/municipal-issues
   - for/advocacy
+  - neighbourhood/leaside
 link: https://leasideresidents.ca
 address:
   streetAddress: 1601 Bayview Avenue

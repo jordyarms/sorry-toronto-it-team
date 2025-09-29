@@ -8,6 +8,7 @@ tags:
   - for/table-top-games
   - for/board-games
   - for/rpg
+  - audience/gamers
 link: https://breakoutcon.com
 social:
   instagram: https://www.instagram.com/breakoutcon/

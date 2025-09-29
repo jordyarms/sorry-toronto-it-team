@@ -8,6 +8,7 @@ tags:
   - for/woodworking
   - for/3d-printing
   - for/creativity
+  - neighbourhood/chinatown
 link: https://ttlmakerspace.com
 address:
   streetAddress: 192 Spadina Avenue

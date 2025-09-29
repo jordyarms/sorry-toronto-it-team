@@ -6,6 +6,7 @@ tags:
   - type/neighbourhood-association
   - for/municipal-issues
   - for/advocacy
+  - neighbourhood/seaton-village
 link: https://www.seatonvillage.ca
 social:
   facebook: https://www.facebook.com/groups/seatonvillage/
