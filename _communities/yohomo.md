@@ -5,7 +5,7 @@ source: "MCP Generative Addition"
 tags:
   - type/organization
   - type/online-community
-  - for/arts
+  - for/art
   - for/culture
   - for/nightlife
   - audience/queer-community

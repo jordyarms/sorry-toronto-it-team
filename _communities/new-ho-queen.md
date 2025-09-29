@@ -7,7 +7,7 @@ tags:
   - type/collective
   - for/nightlife
   - for/art
-  - for/performance-arts
+  - for/performance-art
   - audience/queer-community
   - audience/trans-community
   - audience/asian-community
