@@ -7,7 +7,7 @@ tags:
   - type/community-centre
   - for/skill-development
   - audience/bangladeshi-community
-  - audiencer/youth
+  - audience/youth
   - audience/seniors
 link: https://www.bangladeshi.ca
 address:
