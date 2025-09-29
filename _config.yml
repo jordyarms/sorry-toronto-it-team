@@ -1,6 +1,6 @@
 title: t0ronto.ca
 description: >- # this means to ignore newlines until "baseurl:"
-  Community Open Data Collaboration // Toronto Communities Directory Pilot
+  Toronto Digital Commons // Toronto Data Commons
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://t0ronto.ca" # the base hostname & protocol for your site, e.g. http://example.com
 
