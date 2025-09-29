@@ -4,7 +4,7 @@ description: "Toronto After Dark Film Festival is one of the world's leading sho
 source: "MCP Generative Addition"
 tags:
   - type/annual-event
-  - type/festival
+  - type/film-festival
   - for/film
   - for/horror
 link: https://torontoafterdark.com
