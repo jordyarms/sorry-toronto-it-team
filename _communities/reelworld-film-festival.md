@@ -7,7 +7,7 @@ tags:
   - type/film-festival
   - type/organization
   - for/film
-  - audience/bipoc
+  - audience/bipoc-community
   - audience/indigenous-community
 link: https://www.reelworld.ca
 address:

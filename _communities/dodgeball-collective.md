@@ -7,7 +7,6 @@ tags:
   - type/sports-league
   - for/dodgeball
   - for/sports
-  - audience/adults
 link: https://dodgeballcollective.com
 address:
   streetAddress: 570 Shaw Street

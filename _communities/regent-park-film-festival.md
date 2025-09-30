@@ -8,7 +8,7 @@ tags:
   - for/film
   - for/art
   - for/education
-  - audience/bipoc
+  - audience/marginalized-community
 link: https://rpff.ca
 address:
   streetAddress: 585 Dundas Street East, Suite 240

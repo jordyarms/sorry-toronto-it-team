@@ -6,7 +6,6 @@ tags:
   - type/event-series
   - for/fashion
   - for/sustainability
-  - audience/all-ages
 link: https://www.goodswap.ca
 address:
   streetAddress: 720 Bathurst Street

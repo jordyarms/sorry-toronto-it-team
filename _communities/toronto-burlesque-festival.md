@@ -7,7 +7,7 @@ tags:
   - type/festival
   - for/burlesque
   - for/performance-art
-  - audience/adult
+  - audience/adults
 link: https://www.torontoburlesquefestival.ca
 address:
   streetAddress: 12 Alexander Street

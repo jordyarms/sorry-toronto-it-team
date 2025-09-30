@@ -4,7 +4,6 @@ description: "Toronto's online community dedicated to queer arts, culture, and n
 source: "MCP Generative Addition"
 tags:
   - type/organization
-  - type/online-community
   - for/art
   - for/culture
   - for/nightlife

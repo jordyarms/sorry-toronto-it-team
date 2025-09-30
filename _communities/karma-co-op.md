@@ -5,11 +5,8 @@ source: "MCP Generative Addition"
 tags:
   - type/organization
   - type/cooperative
-  - type/grocery-store
   - for/food
   - for/sustainability
-  - for/local-food
-  - audience/members
   - neighbourhood/seaton-village
   - neighbourhood/the-annex
 link: https://www.karmacoop.org
