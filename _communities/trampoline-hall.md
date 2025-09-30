@@ -5,6 +5,7 @@ source: https://lightmorning.substack.com/p/weave-report-summer-2025-edition
 tags:
   - type/event-series
   - for/lectures
+  - for/absurdity
   - for/participation
 link: https://www.trampolinehall.net/
 address:
