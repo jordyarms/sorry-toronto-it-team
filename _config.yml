@@ -1,8 +1,8 @@
-title: t0ronto.ca
+title: sorry Toronto IT team
 description: >- # this means to ignore newlines until "baseurl:"
-  Toronto Digital Commons // Toronto Data Commons
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://t0ronto.ca" # the base hostname & protocol for your site, e.g. http://example.com
+  A proxy of Community Open Data Collaboration // Toronto Communities Directory Pilot
+baseurl: "/sorry-toronto-it-team" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 plugins:
