@@ -1,12 +1,12 @@
 ---
 name: The Stop
 description: "The Stop Community Food Centre strives to increase access to healthy food in a manner that maintains dignity, builds health and community, and challenges inequality."
-source: 'issue #76 by @jordyarms'
+source: "issue #76 by @jordyarms"
 tags:
   - type/organization
   - for/food
-  - for/community-building
   - for/food-security
+  - neighbourhood/carleton-village
 link: https://www.thestop.org
 address:
   streetAddress: 1884 Davenport Road

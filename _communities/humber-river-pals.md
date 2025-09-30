@@ -7,7 +7,6 @@ tags:
   - for/environmentalism
   - for/volunteering
   - for/community-building
-  - audience/neighbours
   - neighbourhood/weston
 link: https://humberriverpals.ca
 social:

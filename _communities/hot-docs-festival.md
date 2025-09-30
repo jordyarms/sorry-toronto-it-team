@@ -7,7 +7,6 @@ tags:
   - type/film-festival
   - for/film
   - for/documentaries
-  - for/filmmakers
 link: https://hotdocs.ca/festivals/hot-docs-festival
 address:
   streetAddress: 506 Bloor Street West

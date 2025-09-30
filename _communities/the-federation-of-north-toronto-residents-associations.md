@@ -4,7 +4,6 @@ description: "The Federation of North Toronto Residents' Associations Incorporat
 source: bulk import
 tags:
   - type/neighbourhood-association
-  - type/federation
   - for/urban-planning
   - for/municipal-issues
   - for/advocacy

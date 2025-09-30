@@ -4,7 +4,7 @@ description: "A Canadian, independent, multicultural bookstore specializing in b
 source: "MCP Generative Addition"
 tags:
   - type/venue
-  - type/bookstore
+  - type/shop
   - for/reading
   - audience/bipoc-community
 link: https://www.adifferentbooklist.com

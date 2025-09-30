@@ -9,7 +9,7 @@ tags:
   - for/volunteering
   - audience/post-secondary-students
   - audience/cyclists
-  - neighbourhood/u-of-t
+  - neighbourhood/discovery-district
 link: https://bikechain.ca
 address:
   streetAddress: 230 College Street

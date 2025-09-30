@@ -6,7 +6,6 @@ tags:
   - type/venue
   - type/community-hub
   - for/shopping
-  - audience/neighbours
   - neighbourhood/east-york
 link: https://oldscoolgeneralstore.com
 address:

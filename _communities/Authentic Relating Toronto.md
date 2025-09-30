@@ -4,7 +4,6 @@ description: "ART is a personal-growth oriented organization and community who's
 source: https://torontoeventgenerator.substack.com/about
 tags:
   - type/event-series
-  - type/community
   - for/personal-development
   - for/relationships
   - for/mindfulness
