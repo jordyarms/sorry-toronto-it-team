@@ -4,7 +4,6 @@ description: "We create meaningful experiences by embracing openness and a willi
 source: https://lightmorning.substack.com/p/weave-report-summer-2025-edition
 tags:
   - type/event-series
-  - type/community
   - for/personal-development
   - for/creativity
   - for/experimentation

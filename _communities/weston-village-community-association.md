@@ -5,6 +5,7 @@ source: bulk import
 tags:
   - type/neighbourhood-association
   - for/municipal-issues
+  - neighbourhood/king-west
 link: https://welcometoweston.ca
 address:
   streetAddress: 1974 Weston Road

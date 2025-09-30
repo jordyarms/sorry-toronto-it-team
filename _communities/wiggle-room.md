@@ -4,7 +4,6 @@ description: "Imagine a place where you can enjoy late underground vibes without
 source: "issue #64 by @jordyarms"
 tags:
   - type/venue
-  - type/dance-club
   - for/music
   - for/dancing
   - for/house-music

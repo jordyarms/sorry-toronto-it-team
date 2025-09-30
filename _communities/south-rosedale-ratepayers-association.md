@@ -6,6 +6,7 @@ tags:
   - type/neighbourhood-association
   - for/municipal-issues
   - for/advocacy
+  - neighbourhood/rosedale
 link: https://www.southrosedale.org
 ---
 

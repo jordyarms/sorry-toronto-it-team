@@ -4,7 +4,7 @@ title: Home
 ---
 
 <details name="about">
-  <summary>About</summary>
+  <summary>About the Toronto Communities Directory Pilot</summary>
   <p>This is a lightweight directory of Toronto's various communities. It is intended to facilitate the discovery of communities in Toronto and serve as an example of community centred data.</p> 
   <p>Currently in early development, the data structure and directory content will be evolving as requirements and insights emerge.</p> 
   <p>This initiative is an open collaboration. You are welcome to contribute. To get involved or learn more please come to Civic Tech Toronto's hacknights on Tuesday evenings, or 1RG's monthly Civic Sundays.</p>

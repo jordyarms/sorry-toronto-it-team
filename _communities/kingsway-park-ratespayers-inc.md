@@ -6,6 +6,7 @@ tags:
   - type/neighbourhood-association
   - for/municipal-issues
   - for/advocacy
+  - neighbourhood/kingsway
 link: http://www.kingswayratepayers.com
 address:
   streetAddress: 184 Prince Edward Drive South

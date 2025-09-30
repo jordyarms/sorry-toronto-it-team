@@ -9,7 +9,7 @@ tags:
   - for/art
   - for/photography
   - audience/youth
-  - audience/marginalized-communities
+  - audience/marginalized-community
 link: https://www.theremixproject.com
 address:
   streetAddress: 132 Queens Quay East

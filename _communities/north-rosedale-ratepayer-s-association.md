@@ -6,6 +6,7 @@ tags:
   - type/neighbourhood-association
   - for/municipal-issues
   - for/advocacy
+  - neighbourhood/rosedale
 link: http://www.northrosedale.ca
 social:
   facebook: https://www.facebook.com/groups/1935709353325635/
