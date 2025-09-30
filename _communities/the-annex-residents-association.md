@@ -6,6 +6,7 @@ tags:
   - type/neighbourhood-association
   - for/municipal-issues
   - for/advocacy
+  - neighbourhood/the-annex
 link: https://www.theara.org
 address:
   streetAddress: PO Box 19057, RPO Walmer

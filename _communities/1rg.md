@@ -5,7 +5,6 @@ source: https://lightmorning.substack.com/p/weave-report-summer-2025-edition
 tags:
   - type/event-space
   - type/coworking-space
-  - type/intentional-community
   - audience/technologists
 link: https://1rg.space/
 address:

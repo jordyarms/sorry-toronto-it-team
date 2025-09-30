@@ -6,6 +6,7 @@ tags:
   - type/neighbourhood-association
   - for/municipal-issues
   - for/advocacy
+  - neighbourhood/swansea
 link: https://www.swansearatepayers.ca
 address:
   streetAddress: Box 103, 95 Lavinia Avenue

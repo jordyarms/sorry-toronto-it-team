@@ -7,6 +7,7 @@ tags:
   - for/music
   - for/dancing
   - for/food
+  - audience/caribbean-community
 link: https://www.torontocarnival.ca
 address:
   streetAddress: Exhibition Place

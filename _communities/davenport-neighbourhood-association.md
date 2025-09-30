@@ -6,6 +6,7 @@ tags:
   - type/neighbourhood-association
   - for/municipal-issues
   - for/advocacy
+  - neighbourhood/davenport
 link: https://dnatoronto.wordpress.com
 social:
   email: dnaresidents@gmail.com

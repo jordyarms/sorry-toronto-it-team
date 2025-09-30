@@ -6,6 +6,7 @@ tags:
   - type/neighbourhood-association
   - for/municipal-issues
   - for/advocacy
+  - neighbourhood/garment-district
 link: https://www.gdnatoronto.org
 social:
   instagram: https://www.instagram.com/gdnatoronto/

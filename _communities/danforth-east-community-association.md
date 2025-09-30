@@ -6,6 +6,7 @@ tags:
   - type/neighbourhood-association
   - for/municipal-issues
   - for/advocacy
+  - neighbourhood/danforth
 link: https://deca.to
 address:
   streetAddress: 42 Cedarvale Avenue

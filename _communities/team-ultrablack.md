@@ -4,7 +4,6 @@ description: Empowering our Black peers through fitness, wellness and community.
 source: "MCP Generative Addition"
 tags:
   - type/organization
-  - type/community
   - for/running
   - for/fitness
   - for/well-being
